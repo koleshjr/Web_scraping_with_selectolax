@@ -41,6 +41,8 @@ def format_and_transforms(attrs: dict):
         if k in attrs:
             attrs[k] = v(attrs[k])
 
+    attrs['discount_pct'] =round( (attrs['original_price'] - attrs["selling_price"]) / attrs['original_price'] * 100, 3)
+
     return attrs
 
 def save_to_file(filename = "extract", data: list[dict] = None):
